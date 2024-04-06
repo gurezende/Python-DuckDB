@@ -1,0 +1,20 @@
+site_name: Projeto ETL
+theme:
+  name: material
+  palette:
+    primary: blue
+  language: en
+
+repo_name: "gurezende/Python-DuckDB"
+repo_url: "https://github.com/gurezende/Python-DuckDB"
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python

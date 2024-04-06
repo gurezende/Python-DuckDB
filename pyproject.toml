@@ -11,6 +11,12 @@ pandas = "^2.2.1"
 openpyxl = "^3.1.2"
 pytest = "^8.1.1"
 taskipy = "^1.12.2"
+mkdocs = "^1.5.3"
+mkdocstrings-python = "^1.9.2"
+pygments = "^2.17.2"
+mkdocs-material = "^9.5.17"
+pymdown-extensions = "^10.7.1"
+mkdocs-bootstrap386 = "^0.0.2"
 
 
 [build-system]
@@ -21,3 +27,4 @@ build-backend = "poetry.core.masonry.api"
 [tool.taskipy.tasks]
 test = "poetry run pytest -v"
 run = "python code/main.py"
+kill = "kill -9 $(lsof -t -i :8000)"
