@@ -276,11 +276,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#project-workflow-teste" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      Project Workflow Teste
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcao-para-extrair-dados-das-planilhas-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Função para extrair dados das planilhas excel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Função para extrair dados das planilhas excel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appCode.pipeline.extract.extract_from_excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      extract_from_excel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -328,11 +352,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
+  <a href="#project-workflow-teste" class="md-nav__link">
     <span class="md-ellipsis">
-      Project layout
+      Project Workflow Teste
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcao-para-extrair-dados-das-planilhas-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Função para extrair dados das planilhas excel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Função para extrair dados das planilhas excel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appCode.pipeline.extract.extract_from_excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      extract_from_excel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -363,12 +411,88 @@
 <li><code>mkdocs build</code> - Build the documentation site.</li>
 <li><code>mkdocs -h</code> - Print help message and exit.</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre>
+<h2 id="project-workflow-teste">Project Workflow Teste</h2>
+<pre class="mermaid"><code>gantt
+dateFormat  YYYY-MM-DD
+title Adding GANTT diagram to mermaid
+excludes weekdays 2014-01-10
+
+section A section
+Completed task            :done,    des1, 2014-01-06,2014-01-08
+Active task               :active,  des2, 2014-01-09, 3d
+Future task               :         des3, after des2, 5d
+Future task2               :         des4, after des3, 5d</code></pre>
+<h2 id="funcao-para-extrair-dados-das-planilhas-excel">Função para extrair dados das planilhas excel</h2>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<a id="appCode.pipeline.extract.extract_from_excel"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Create function to read files from a folder and returna list of dataframes</p>
+<p>Arguments: </p>
+<ul>
+<li>
+<p>path: input path with the list of files</p>
+</li>
+<li>
+<p>return : list of dataframes</p>
+</li>
+</ul>
+
+          <details class="quote">
+            <summary>Source code in <code>appCode\pipeline\extract.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">extract_from_excel</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create function to read files from a folder and returna list of dataframes</span>
+
+<span class="sd">    Arguments: </span>
+
+<span class="sd">    * path: input path with the list of files</span>
+
+<span class="sd">    * return : list of dataframes</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># List all the files XLSX</span>
+    <span class="n">all_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">&quot;*.xlsx&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Create list of dataframes from excel files</span>
+    <span class="n">data_frame_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">all_files</span><span class="p">:</span>
+        <span class="n">dtf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="n">data_frame_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dtf</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_frame_list</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
 
 
 
